@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.result > p {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+;}
+
+.images-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.images-group * {
+    width: 6rem;
+    height: 6rem;
+}
+
+.computer-selection img{
+    height: 16rem;
+    width: 16rem;
+}
+
+.computer-score,
+.user-score {
+    font-size: 5rem;
+}
