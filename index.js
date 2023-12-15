@@ -1,16 +1,7 @@
 "use strict";
 
-/*
-- Le joeur selectionne une des trois images.
-- On génère un nombre aléatoire pour savoir si l'ordinateur a joué pierre feuille ou ciseaux
-- le point est accordé au gagnant de la manche.
-- Le premier à 3 manches gagnantes gagne le point.
-
-Bonus : Affichez le score de toutes les parties gagnées de chacun (vous + ordi)
-Bonus du bonus : Sauvegardez les parties gagnées de chacun pour qu'on ai toujours les résultats en revenant sur la page (voir localStorage) */
-
 const imagesGame = document.querySelectorAll(".images-group img");
-const computerSelectionImage = document.querySelector(".computer-selection img");
+let computerSelectionImage = document.querySelector(".computer-selection img");
 const result = document.querySelector(".result p");
 const score = document.querySelector("#score");
 const userScoreDiv = document.querySelector(".user-score p");
@@ -29,7 +20,6 @@ const choices = {
     feuille: "feuille",
     ciseaux: "ciseaux",
 }
-
 
 function userSelection(imagesGame) {
     imagesGame.forEach(element => {
@@ -79,19 +69,29 @@ function logicGame(userSelection, randomComputerSelection) {
 }
 
 function displayComputerSelectionImage(computerSelection) {
+    const parentElement = document.querySelector(".computer-selection");
+    let image = parentElement.querySelector('img');
+
+    if (!image) {
+        image = document.createElement('img');
+        parentElement.appendChild(image);
+    }
+
     switch (computerSelection) {
         case choices.pierre:
-            computerSelectionImage.src = `assets/images/${choices.pierre}.png`;
+            image.src = `assets/images/${choices.pierre}.png`;
             break;
         case choices.feuille:
-            computerSelectionImage.src = `assets/images/${choices.feuille}.png`;
+            image.src = `assets/images/${choices.feuille}.png`;
             break;
         case choices.ciseaux:
-            computerSelectionImage.src = `assets/images/${choices.ciseaux}.png`;
+            image.src = `assets/images/${choices.ciseaux}.png`;
             break;
     }
 
+    computerSelectionImage = image;
 }
+
 
 function setGrayElement(element) {
     element.disabled = true;
